@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@import "./styles/tokens.css";
+
+@layer base {
+  body {
+    background-color: #111111;
+    color: var(--feazto-text);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    user-select: none;
+  }
+}
+
+/* Global Aurora White background atmosphere (White dominant + soft FEAZTO yellow glow) */
+.aurora-white-bg {
+  background: 
+    radial-gradient(circle at 15% 5%, rgba(255, 210, 31, 0.14), transparent 28%),
+    radial-gradient(circle at 85% 20%, rgba(255, 210, 31, 0.09), transparent 32%),
+    #ffffff;
+}
+
+/* Custom scrollbar styling for horizontal bento lists */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Pulse animation for live badge */
+@keyframes pulse-yellow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.15);
+  }
+}
+
+.animate-pulse-yellow {
+  animation: pulse-yellow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

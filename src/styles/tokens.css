@@ -1,0 +1,21 @@
+:root {
+  --feazto-yellow: #FFD21F;
+  --feazto-yellow-bright: #FFCC00;
+  --feazto-black: #111111;
+  --feazto-white: #FFFFFF;
+  --feazto-surface: #FFFFFF;
+  --feazto-surface-soft: #FAFAFA;
+  --feazto-border: #E8E8E8;
+  --feazto-border-dark: rgba(17, 17, 17, 0.12);
+  --feazto-text: #111111;
+  --feazto-text-muted: #707070;
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 30px;
+
+  --shadow-soft: 0 8px 30px rgba(17, 17, 17, 0.08);
+  --shadow-card: 0 4px 18px rgba(17, 17, 17, 0.06);
+  --shadow-elevated: 0 12px 36px rgba(17, 17, 17, 0.12);
+}

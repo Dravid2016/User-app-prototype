@@ -1,0 +1,46 @@
+import { Cook } from '../types';
+
+export const MOCK_COOKS: Cook[] = [
+  {
+    id: 'cook-1',
+    name: 'Chef Rajeshwari Ammal',
+    title: 'Master of Traditional Tanjore Cuisine',
+    specialty: 'Banana Leaf Feasts, Arachavitta Sambar & Traditional Sweets',
+    rating: 4.95,
+    reviews: 84,
+    experience: '22 Years',
+    pricePerMeal: 1200,
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600',
+    bio: 'Specialized in authentic Brahmin & Tanjore style traditional home cooking for family gatherings, pujas, and private dining.',
+    availableSlots: ['08:00 AM - Breakfast', '12:30 PM - Lunch', '07:30 PM - Dinner'],
+    dishes: ['Tanjore Kalyana Sambar', 'Vatha Kuzhambu', 'Akkaravadisal', 'Podi Dosa', 'Badam Halwa'],
+  },
+  {
+    id: 'cook-2',
+    name: 'Chef Murugan Chettiar',
+    title: 'Heritage Chettinad & Karaikudi Specialist',
+    specialty: 'Chettinad Masala Roasts, Biryani & Parotta Feasts',
+    rating: 4.9,
+    reviews: 110,
+    experience: '18 Years',
+    pricePerMeal: 1500,
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600',
+    bio: 'Hailing from Karaikudi, Chef Murugan brings hand-ground aromatic Chettinad spices to your kitchen for special celebrations.',
+    availableSlots: ['01:00 PM - Lunch', '08:00 PM - Dinner'],
+    dishes: ['Chettinad Chicken/Veg Roast', 'Kothu Parotta', 'Seeraga Samba Biryani', 'Nandu Rasam', 'Elaneer Payasam'],
+  },
+  {
+    id: 'cook-3',
+    name: 'Chef Gomathi Sundaram',
+    title: 'Kongu Naadu & Healthy Millet Specialist',
+    specialty: 'Millet Tiffins, Kollu Rasam & Traditional Poriyals',
+    rating: 4.85,
+    reviews: 65,
+    experience: '14 Years',
+    pricePerMeal: 1000,
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600',
+    bio: 'Pioneer in healthy regional cooking, ancient grain millet dishes, and organic home-style meals tailored for health-conscious families.',
+    availableSlots: ['08:30 AM - Breakfast', '01:00 PM - Lunch'],
+    dishes: ['Ragi Dosa', 'Kollu Rasam', 'Thinai Ven Pongal', 'Keerai Kootu', 'Kamarkat Sweet'],
+  }
+];
