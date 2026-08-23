@@ -23,7 +23,7 @@ export const CookCard: React.FC<CookCardProps> = ({ cook, onBook }) => {
   return (
     <BentoCard padding="none" className="mb-4 flex flex-col border-2 border-black/10 shadow-sm">
       <div className="relative w-full h-44">
-        <ImageWithFallback src={cook.image} alt={cook.name} className="w-full h-full" />
+        <ImageWithFallback src={cook.image} alt={cook.name} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3 text-white">
           <div>
             <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#FFD21F] text-[#111111] text-[10px] font-black rounded-md mb-1">

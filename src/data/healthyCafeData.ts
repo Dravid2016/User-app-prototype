@@ -152,7 +152,7 @@ export const POPULAR_KITCHENS: PopularKitchenItem[] = [
     specialty: 'Authentic Chettinad Biryani & Crab Masala',
     area: 'Anna Nagar, Chennai',
     deliveryTime: '25-30 min',
-    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80',
     featuredDishes: ['Chettinad Chicken Biryani', 'Mutton Sukka', 'Coin Parotta'],
   },
   {
@@ -164,7 +164,7 @@ export const POPULAR_KITCHENS: PopularKitchenItem[] = [
     specialty: 'Traditional Iyer Sambar, Rasam & Vathal Kozhambu',
     area: 'Mylapore, Chennai',
     deliveryTime: '20-25 min',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=800&q=80',
     featuredDishes: ['Tanjore Full Meals Thali', 'Mor Kozhambu', 'Elaneer Payasam'],
   },
   {
@@ -176,7 +176,7 @@ export const POPULAR_KITCHENS: PopularKitchenItem[] = [
     specialty: 'Slow-Cooked Dal Makhani & Amritsari Kulcha',
     area: 'T. Nagar, Chennai',
     deliveryTime: '30-35 min',
-    image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=800&q=80',
     featuredDishes: ['Butter Chicken', 'Amritsari Paneer Kulcha', 'Sarson Saag'],
   },
   {
@@ -188,7 +188,7 @@ export const POPULAR_KITCHENS: PopularKitchenItem[] = [
     specialty: 'Kerala Fish Curry & Flaky Layered Parotta',
     area: 'Adyar, Chennai',
     deliveryTime: '25-30 min',
-    image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
     featuredDishes: ['Malabar Fish Curry', 'Kerala Porotta', 'Beef Roast'],
   },
 ];

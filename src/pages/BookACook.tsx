@@ -66,42 +66,50 @@ export const BookACook: React.FC = () => {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {POPULAR_KITCHENS.map((kitchen: PopularKitchenItem) => (
-            <BentoCard key={kitchen.id} padding="none" className="border-2 border-[#111111] overflow-hidden shadow-sm">
-              <div className="relative h-32 w-full overflow-hidden">
+            <BentoCard key={kitchen.id} padding="none" className="border-2 border-[#111111] overflow-hidden shadow-sm hover:shadow-md transition-all">
+              {/* Clean Image Container */}
+              <div className="relative h-44 w-full overflow-hidden bg-gray-100 group">
                 <img
                   src={kitchen.image}
                   alt={kitchen.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute top-2 right-2 bg-[#FFD21F] text-[#111111] text-[10px] font-black px-2 py-0.5 rounded-full border border-[#111111] flex items-center gap-1">
-                  <Star size={11} className="fill-[#111111]" /> {kitchen.rating} ({kitchen.reviewsCount})
+                
+                {/* Top Badges */}
+                <div className="absolute top-2.5 left-2.5 bg-[#111111] text-[#FFD21F] text-[10px] font-black px-2.5 py-1 rounded-full border border-[#FFD21F] flex items-center gap-1 shadow-xs">
+                  <Utensils size={11} /> Home Kitchen
                 </div>
-                <div className="absolute bottom-2 left-2 right-2 text-white">
-                  <h4 className="text-xs font-black drop-shadow-sm">{kitchen.name}</h4>
-                  <p className="text-[10px] text-gray-200 font-medium flex items-center gap-1">
-                    <MapPin size={11} className="text-[#FFD21F]" /> {kitchen.area} • {kitchen.deliveryTime}
-                  </p>
+
+                <div className="absolute top-2.5 right-2.5 bg-[#FFD21F] text-[#111111] text-[10px] font-black px-2.5 py-1 rounded-full border border-[#111111] flex items-center gap-1 shadow-xs">
+                  <Star size={11} className="fill-[#111111]" /> {kitchen.rating} ({kitchen.reviewsCount})
                 </div>
               </div>
 
-              <div className="p-3 bg-white">
-                <p className="text-xs font-bold text-[#111111] mb-2">
+              {/* Card Body */}
+              <div className="p-3.5 bg-white">
+                <div className="mb-2">
+                  <h4 className="text-sm font-black text-[#111111] leading-tight mb-0.5">{kitchen.name}</h4>
+                  <p className="text-[10.5px] font-bold text-[#707070] flex items-center gap-1">
+                    <MapPin size={11} className="text-[#FFD21F] shrink-0" /> {kitchen.area} • <span className="text-[#111111] font-black">{kitchen.deliveryTime}</span>
+                  </p>
+                </div>
+
+                <p className="text-xs font-bold text-[#111111] mb-2 leading-snug">
                   Specialty: <span className="text-[#707070] font-medium">{kitchen.specialty}</span>
                 </p>
 
                 {/* Dish Highlights */}
                 <div className="flex flex-wrap gap-1 mb-3">
                   {kitchen.featuredDishes.map((dish, i) => (
-                    <span key={i} className="text-[9px] font-extrabold bg-[#FAFAFA] text-[#111111] px-2 py-0.5 rounded border border-black/10">
+                    <span key={i} className="text-[9.5px] font-extrabold bg-[#FAFAFA] text-[#111111] px-2.5 py-0.5 rounded-md border border-black/10">
                       {dish}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-2 border-t border-black/10">
+                <div className="flex items-center justify-between pt-2.5 border-t border-black/10">
                   <span className="text-[10px] font-black text-[#707070]">
                     Owner: <span className="text-[#111111] font-black">{kitchen.chefName}</span>
                   </span>
@@ -110,7 +118,7 @@ export const BookACook: React.FC = () => {
                       showToast(`Opened ${kitchen.name} Menu`);
                       setPage('explore');
                     }}
-                    className="px-3 py-1 bg-[#FFD21F] text-[#111111] text-xs font-black rounded-lg border border-[#111111] active:scale-95 transition-all shadow-xs cursor-pointer"
+                    className="px-3.5 py-1.5 bg-[#FFD21F] text-[#111111] text-xs font-black rounded-xl border border-[#111111] active:scale-95 transition-all shadow-xs cursor-pointer hover:bg-[#ffe052]"
                   >
                     View Kitchen Menu →
                   </button>
