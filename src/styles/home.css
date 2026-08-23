@@ -251,8 +251,12 @@
   box-shadow: 0 0.5px 0 var(--feazto-black);
 }
 
-.quick-action[data-type="food"] {
-  background: var(--feazto-yellow);
+.quick-action[data-type="food"],
+.quick-action-active {
+  background: var(--feazto-yellow) !important;
+  color: var(--feazto-black) !important;
+  border-color: var(--feazto-black) !important;
+  font-weight: 950 !important;
 }
 
 .quick-action-dot {
@@ -264,8 +268,9 @@
   background: var(--feazto-yellow);
 }
 
-.quick-action[data-type="food"] .quick-action-dot {
-  background: var(--feazto-black);
+.quick-action[data-type="food"] .quick-action-dot,
+.quick-action-active .quick-action-dot {
+  background: var(--feazto-black) !important;
 }
 
 /* -----------------------------

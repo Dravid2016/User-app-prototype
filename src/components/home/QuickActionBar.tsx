@@ -1,35 +1,63 @@
 import React from 'react';
 import { useAppStore } from '../../store/appStore';
-
-interface ActionItem {
-  label: string;
-  type: 'diet' | 'food' | 'cook';
-  route: string;
-}
-
-const actions: ActionItem[] = [
-  { label: "Diet Meal", type: "diet", route: "explore" },
-  { label: "Food App", type: "food", route: "explore" },
-  { label: "Book Cook", type: "cook", route: "book-a-cook" },
-];
+import { Utensils, ChefHat, Coffee } from 'lucide-react';
 
 export const QuickActionBar: React.FC = () => {
-  const { setPage } = useAppStore();
+  const { page, setPage } = useAppStore();
+
+  const isFeaztoActive = page === 'home' || page === 'regional-food' || page === 'explore' || page === 'food-detail';
+  const isBookCookActive = page === 'book-a-cook' || page === 'cook-detail';
+  const isCafeActive = page === 'cafes' || page === 'cafe-detail';
+
+  const actions = [
+    {
+      id: 'feazto',
+      label: 'Feazto',
+      icon: Utensils,
+      isActive: isFeaztoActive,
+      onClick: () => setPage('home'),
+    },
+    {
+      id: 'book-cook',
+      label: 'Book a cook',
+      icon: ChefHat,
+      isActive: isBookCookActive,
+      onClick: () => setPage('book-a-cook'),
+    },
+    {
+      id: 'cafe',
+      label: 'Cafe',
+      icon: Coffee,
+      isActive: isCafeActive,
+      onClick: () => setPage('cafes'),
+    },
+  ];
 
   return (
     <div className="quick-actions select-none">
-      {actions.map((action) => (
-        <button
-          key={action.type}
-          onClick={() => setPage(action.route as any)}
-          className="quick-action"
-          data-type={action.type}
-          type="button"
-        >
-          <span className="quick-action-dot" />
-          {action.label}
-        </button>
-      ))}
+      {actions.map((action) => {
+        const Icon = action.icon;
+        return (
+          <button
+            key={action.id}
+            onClick={action.onClick}
+            className={`quick-action transition-all cursor-pointer ${
+              action.isActive ? 'quick-action-active' : ''
+            }`}
+            data-type={action.isActive ? 'food' : 'default'}
+            type="button"
+          >
+            <span
+              className={`quick-action-dot ${
+                action.isActive ? 'bg-[#111111]' : 'bg-[#FFD21F]'
+              }`}
+            />
+            <Icon size={13} className="mr-1 inline-block" />
+            {action.label}
+          </button>
+        );
+      })}
     </div>
   );
 };
+
