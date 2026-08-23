@@ -46,27 +46,35 @@
 .feazto-header__actions {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 5px;
 }
 
 .feazto-header__icon-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 29px;
-  height: 29px;
+  width: 31px;
+  height: 31px;
   padding: 0;
-  border: 0;
-  background: transparent;
-  color: #202020;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  color: #111111;
   cursor: pointer;
   border-radius: 50%;
-  transition: background-color 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .feazto-header__icon-button:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
+
+.feazto-header__icon-button:active {
+  transform: scale(0.92);
+}
+
 
 .feazto-header__profile {
   display: inline-flex;
