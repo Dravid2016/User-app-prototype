@@ -83,6 +83,7 @@ export interface Cook {
   experience: string;
   pricePerMeal: number;
   image: string;
+  coverImage?: string;
   bio: string;
   availableSlots: string[];
   dishes: string[];

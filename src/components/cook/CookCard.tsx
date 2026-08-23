@@ -4,7 +4,7 @@ import { BentoCard } from '../bento/BentoCard';
 import { BentoButton } from '../bento/BentoButton';
 import { ImageWithFallback } from '../common/ImageWithFallback';
 import { Rating } from '../common/Rating';
-import { ChefHat, Award, ShieldCheck, Sparkles } from 'lucide-react';
+import { ChefHat, Award, ShieldCheck } from 'lucide-react';
 import { useAppStore } from '../../store/appStore';
 
 interface CookCardProps {
@@ -20,33 +20,49 @@ export const CookCard: React.FC<CookCardProps> = ({ cook, onBook }) => {
     setPage('cook-detail');
   };
 
+  const defaultCover = "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=800&q=80";
+
   return (
-    <BentoCard padding="none" className="mb-4 flex flex-col border-2 border-[#111111] overflow-hidden shadow-sm hover:shadow-md transition-all">
-      <div className="relative w-full h-48 bg-gray-100 group">
-        <ImageWithFallback src={cook.image} alt={cook.name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" />
+    <BentoCard padding="none" className="mb-4 flex flex-col border-2 border-[#111111] overflow-hidden shadow-sm hover:shadow-md transition-all text-left">
+      {/* Kitchen Specialty Banner Header */}
+      <div className="relative w-full h-28 bg-[#111111] overflow-hidden group">
+        <img
+          src={cook.coverImage || defaultCover}
+          alt="Kitchen specialty"
+          className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         
         {/* Top Badges */}
-        <div className="absolute top-2.5 left-2.5 bg-[#111111] text-[#FFD21F] text-[10px] font-black px-2.5 py-1 rounded-full border border-[#FFD21F] flex items-center gap-1 shadow-xs">
-          <ShieldCheck size={12} className="text-[#FFD21F]" /> Verified Home Chef
+        <div className="absolute top-2.5 left-2.5 bg-[#111111] text-[#FFD21F] text-[9.5px] font-black px-2.5 py-0.5 rounded-full border border-[#FFD21F] flex items-center gap-1 shadow-xs">
+          <ShieldCheck size={11} className="text-[#FFD21F]" /> Verified Chef
         </div>
 
-        <div className="absolute top-2.5 right-2.5 bg-[#FFD21F] text-[#111111] text-[10px] font-black px-2.5 py-1 rounded-full border border-[#111111] flex items-center gap-1 shadow-xs">
-          <Award size={12} /> {cook.experience} Exp
+        <div className="absolute top-2.5 right-2.5 bg-[#FFD21F] text-[#111111] text-[9.5px] font-black px-2.5 py-0.5 rounded-full border border-[#111111] flex items-center gap-1 shadow-xs">
+          <Award size={11} /> {cook.experience} Exp
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex items-end p-3.5 text-white">
-          <div>
-            <h3 className="text-base font-black text-white leading-tight drop-shadow-sm">
-              {cook.name}
-            </h3>
-            <p className="text-xs text-gray-200 font-bold">
-              {cook.title}
-            </p>
-          </div>
+        {/* Round Profile Avatar Badge (Overlapping Bottom Edge) */}
+        <div className="absolute -bottom-6 left-3.5 w-16 h-16 rounded-full border-2 border-[#111111] bg-white overflow-hidden shadow-md z-10 shrink-0">
+          <ImageWithFallback
+            src={cook.image}
+            alt={cook.name}
+            className="w-full h-full object-cover object-center"
+          />
         </div>
       </div>
 
-      <div className="p-3.5 bg-white flex flex-col justify-between flex-1">
+      {/* Card Content */}
+      <div className="pt-7 px-3.5 pb-3.5 bg-white flex flex-col justify-between flex-1">
+        <div className="mb-2">
+          <h3 className="text-base font-black text-[#111111] leading-tight">
+            {cook.name}
+          </h3>
+          <p className="text-xs font-bold text-[#707070]">
+            {cook.title}
+          </p>
+        </div>
+
         <div className="flex items-center justify-between mb-2">
           <Rating rating={cook.rating} reviewCount={cook.reviews} />
           <span className="text-sm font-black text-[#111111]">
