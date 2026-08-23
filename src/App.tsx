@@ -63,9 +63,9 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="h-screen h-[100dvh] bg-[#111111] text-[#111111] font-sans antialiased flex items-center justify-center p-0 md:py-6 md:px-4 overflow-hidden">
+    <div className="h-screen h-[100dvh] w-full bg-[#111111] text-[#111111] font-sans antialiased flex items-center justify-center p-0 md:py-6 md:px-4 overflow-hidden fixed inset-0">
       {/* Desktop Background & Presentation Container */}
-      <div className="w-full max-w-[430px] h-screen h-[100dvh] md:h-[860px] md:max-h-[920px] aurora-white-bg md:rounded-[44px] md:border-[8px] md:border-[#222222] md:shadow-[0_25px_70px_rgba(0,0,0,0.4)] overflow-hidden relative flex flex-col">
+      <div className="w-full max-w-[430px] h-full h-[100dvh] md:h-[860px] md:max-h-[920px] aurora-white-bg md:rounded-[44px] md:border-[8px] md:border-[#222222] md:shadow-[0_25px_70px_rgba(0,0,0,0.4)] overflow-hidden relative flex flex-col">
         
         {/* 1. Splash Screen Overlay */}
         {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
@@ -87,12 +87,12 @@ const AppContent: React.FC = () => {
             <Header />
 
             {/* Main Page Scrollable Area */}
-            <main className="flex-1 overflow-y-auto no-scrollbar aurora-white-bg pb-20">
+            <main className="flex-1 overflow-y-auto no-scrollbar aurora-white-bg pb-24">
               {renderPage()}
             </main>
 
-            {/* Global Bottom Navigation Dock (Pinned Still at Screen Bottom at All Times) */}
-            <div className="absolute bottom-3 left-3 right-3 z-50 pointer-events-none">
+            {/* Global Bottom Navigation Dock (Fixed Still at Screen Bottom at All Times) */}
+            <div className="fixed bottom-3 left-0 right-0 max-w-[430px] mx-auto z-50 px-4 pointer-events-none">
               <MobileDockSearch active={page} onChange={setPage} />
             </div>
           </>
