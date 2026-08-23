@@ -5,9 +5,14 @@ import { useAppStore } from '../../store/appStore';
 
 export const TopNavigation: React.FC = () => {
   const { page, setPage, cartCount, showToast } = useAppStore();
+  const isHomePage = page === 'home';
 
   return (
-    <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-black/5 px-4 py-3 flex items-center justify-between transition-all">
+    <header className={`sticky top-0 z-40 px-4 py-3 flex items-center justify-between transition-all duration-300 ${
+      isHomePage 
+        ? 'bg-transparent border-b border-transparent shadow-none' 
+        : 'bg-white/85 backdrop-blur-md border-b border-black/5 shadow-sm'
+    }`}>
       {/* FEAZTO Logo Left - Rule 9: Every page MUST have FEAZTO logo at Top-Left */}
       <FeaztoLogo onClick={() => setPage('home')} size="md" />
 

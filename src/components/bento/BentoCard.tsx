@@ -6,6 +6,7 @@ interface BentoCardProps {
   onClick?: () => void;
   variant?: 'default' | 'yellow' | 'dark' | 'soft';
   padding?: 'none' | 'sm' | 'md' | 'lg';
+  style?: React.CSSProperties;
 }
 
 export const BentoCard: React.FC<BentoCardProps> = ({
@@ -14,6 +15,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({
   onClick,
   variant = 'default',
   padding = 'md',
+  style,
 }) => {
   const variantStyles = {
     default: 'bg-white border-black/10 text-[#111111] shadow-[0_6px_24px_rgba(17,17,17,0.06)]',
@@ -32,6 +34,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({
   return (
     <article
       onClick={onClick}
+      style={style}
       className={`relative overflow-hidden rounded-[24px] border transition-all duration-200 ${
         variantStyles[variant]
       } ${paddingStyles[padding]} ${

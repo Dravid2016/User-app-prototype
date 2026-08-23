@@ -13,6 +13,7 @@ export const FoodDetail: React.FC = () => {
   const {
     selectedFood,
     setPage,
+    previousPage,
     addToCart,
     toggleFavorite,
     isFavorite,
@@ -47,7 +48,13 @@ export const FoodDetail: React.FC = () => {
       <div className="flex items-center justify-between py-2 mb-3">
         <div className="flex items-center gap-2">
           <button
-            onClick={() => setPage('explore')}
+            onClick={() => {
+              if (previousPage) {
+                setPage(previousPage);
+              } else {
+                setPage('explore');
+              }
+            }}
             className="w-9 h-9 rounded-full bg-[#FAFAFA] border border-black/10 flex items-center justify-center text-[#111111] hover:bg-black/5 active:scale-95 transition-all cursor-pointer"
           >
             <ArrowLeft size={18} />

@@ -15,19 +15,20 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
     { id: 'home' as AppPage, label: 'Home', icon: Home },
     { id: 'explore' as AppPage, label: 'Explore', icon: Compass },
     { id: 'orders' as AppPage, label: 'Orders', icon: ShoppingBag },
-    { id: 'saved' as AppPage, label: 'Saved', icon: Heart },
     { id: 'profile' as AppPage, label: 'You', icon: User },
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 max-w-[430px] mx-auto bg-white/95 backdrop-blur-md border-t border-black/10 px-3 py-2 pb-safe shadow-[0_-4px_20px_rgba(17,17,17,0.06)]">
+    <nav className="absolute bottom-0 left-0 right-0 z-40 w-full bg-white/95 backdrop-blur-md border-t border-black/10 px-3 py-2 pb-safe shadow-[0_-4px_20px_rgba(17,17,17,0.06)]">
       <div className="flex items-center justify-around">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive =
-            active === tab.id ||
-            (tab.id === 'explore' && active === 'food-detail') ||
-            (tab.id === 'orders' && (active === 'cart' || active === 'checkout' || active === 'order-success'));
+            (tab.id === 'home' && (active === 'home' || active === 'regional-food')) ||
+            (tab.id === 'explore' && (active === 'explore' || active === 'food-detail' || active === 'cafes' || active === 'cafe-detail')) ||
+            (tab.id === 'orders' && (active === 'orders' || active === 'cart' || active === 'checkout' || active === 'order-success')) ||
+            (tab.id === 'saved' && active === 'saved') ||
+            (tab.id === 'profile' && active === 'profile');
 
           return (
             <button

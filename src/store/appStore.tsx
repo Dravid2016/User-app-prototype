@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { AppPage, FoodItem, CartItem, Order, UserAddress, Cook, Cafe } from '../types';
+import { AppPage, FoodItem, CartItem, Order, UserAddress, Cook, Cafe, User, Region } from '../types';
 import { MOCK_FOODS } from '../data/foods';
 import { INITIAL_ORDERS } from '../data/orders';
 
 interface AppContextType {
   page: AppPage;
   setPage: (page: AppPage) => void;
+  previousPage: AppPage | null;
   selectedFood: FoodItem | null;
   setSelectedFood: (food: FoodItem | null) => void;
   selectedCook: Cook | null;
@@ -17,6 +18,17 @@ interface AppContextType {
   selectedCategory: string | null;
   setSelectedCategory: (cat: string | null) => void;
   
+  // Auth
+  user: User | null;
+  login: (user: User) => void;
+  logout: () => void;
+  authRedirectPage: AppPage | null;
+  setAuthRedirectPage: (page: AppPage | null) => void;
+
+  // Regional Discovery
+  selectedRegion: Region | null;
+  setSelectedRegion: (region: Region | null) => void;
+
   // Cart
   cart: CartItem[];
   addToCart: (food: FoodItem, quantity?: number) => void;
@@ -78,7 +90,28 @@ const DEFAULT_ADDRESSES: UserAddress[] = [
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [page, setPage] = useState<AppPage>('home');
+  const [page, setPageState] = useState<AppPage>('home');
+  const [previousPage, setPreviousPage] = useState<AppPage | null>(null);
+
+  const setPage = (newPage: AppPage) => {
+    if (newPage !== page) {
+      setPreviousPage(page);
+    }
+    setPageState(newPage);
+  };
+
+  const [selectedRegion, setSelectedRegion] = useState<Region | null>(null);
+
+  const [user, setUser] = useState<User | null>(() => {
+    try {
+      const saved = localStorage.getItem('feazto_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+  const [authRedirectPage, setAuthRedirectPage] = useState<AppPage | null>(null);
+
   const [selectedFood, setSelectedFood] = useState<FoodItem | null>(MOCK_FOODS[0]);
   const [selectedCook, setSelectedCook] = useState<Cook | null>(null);
   const [selectedCafe, setSelectedCafe] = useState<Cafe | null>(null);
@@ -168,7 +201,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
   const cartSubtotal = cart.reduce((acc, item) => acc + item.food.price * item.quantity, 0);
-  const deliveryFee = deliveryMode === 'express' ? 35 : 20;
+  const deliveryFee = deliveryMode === 'express' ? 35 : (cartSubtotal >= 100 ? 0 : (cartSubtotal > 0 ? 25 : 0));
   const packagingFee = cart.length > 0 ? 15 : 0;
   const cartTotal = cartSubtotal > 0 ? cartSubtotal + deliveryFee + packagingFee : 0;
 
@@ -201,11 +234,43 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     showToast('Items added back to Cart');
   };
 
+  const login = (newUser: User) => {
+    setUser(newUser);
+    try {
+      localStorage.setItem('feazto_user', JSON.stringify(newUser));
+    } catch (e) {
+      console.error('Failed to persist user session', e);
+    }
+    const destination = authRedirectPage || 'profile';
+    setPage(destination);
+    setAuthRedirectPage(null);
+    showToast(`Welcome back, ${newUser.name}!`);
+  };
+
+  const logout = () => {
+    setUser(null);
+    try {
+      localStorage.removeItem('feazto_user');
+    } catch (e) {
+      console.error('Failed to clear user session', e);
+    }
+    setPage('home');
+    showToast('Logged out successfully');
+  };
+
   return (
     <AppContext.Provider
       value={{
         page,
         setPage,
+        previousPage,
+        user,
+        login,
+        logout,
+        authRedirectPage,
+        setAuthRedirectPage,
+        selectedRegion,
+        setSelectedRegion,
         selectedFood,
         setSelectedFood,
         selectedCook,

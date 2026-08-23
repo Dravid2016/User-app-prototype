@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppProvider, useAppStore } from './store/appStore';
-import { TopNavigation } from './components/navigation/TopNavigation';
-import { BottomNavigation } from './components/navigation/BottomNavigation';
+import { Header } from './components/layout/header/Header';
+import { MobileDockSearch } from './components/navigation/MobileDockSearch';
 import { Toast } from './components/common/Toast';
 
 import { Home } from './pages/Home';
@@ -17,9 +17,14 @@ import { BookACook } from './pages/BookACook';
 import { CookDetail } from './pages/CookDetail';
 import { CafeDiscovery } from './pages/CafeDiscovery';
 import { CafeDetail } from './pages/CafeDetail';
+import { Auth } from './pages/Auth';
+import { SplashScreen } from './components/common/SplashScreen';
+import { RegionalFood } from './pages/RegionalFood';
 
 const AppContent: React.FC = () => {
-  const { page, setPage, toastMessage } = useAppStore();
+  const { page, setPage, user, toastMessage } = useAppStore();
+  const [showSplash, setShowSplash] = React.useState(true);
+  const [hasOnboarded, setHasOnboarded] = React.useState(false);
 
   const renderPage = () => {
     switch (page) {
@@ -47,6 +52,10 @@ const AppContent: React.FC = () => {
         return <CafeDiscovery />;
       case 'cafe-detail':
         return <CafeDetail />;
+      case 'auth':
+        return <Auth onFinish={() => setPage('home')} />;
+      case 'regional-food':
+        return <RegionalFood />;
       case 'home':
       default:
         return <Home />;
@@ -58,24 +67,37 @@ const AppContent: React.FC = () => {
       {/* Desktop Background & Presentation Container */}
       <div className="w-full max-w-[430px] min-h-screen md:min-h-[860px] md:max-h-[920px] aurora-white-bg md:rounded-[44px] md:border-[8px] md:border-[#222222] md:shadow-[0_25px_70px_rgba(0,0,0,0.4)] overflow-hidden relative flex flex-col">
         
+        {/* 1. Splash Screen Overlay */}
+        {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
+        
         {/* Mobile Device Camera Notch (Desktop Preview Only) */}
         <div className="hidden md:flex justify-center pt-2 pb-1 bg-transparent z-50">
           <div className="w-28 h-4 bg-[#111111] rounded-full" />
         </div>
 
-        {/* Global Top Header */}
-        <TopNavigation />
+        {/* 2. Pre-App Sign In / Onboarding Screen (Placed BEFORE app starts) */}
+        {!showSplash && !hasOnboarded && !user ? (
+          <div className="flex-1 overflow-y-auto no-scrollbar bg-[#fdfaeb] relative z-40 flex flex-col">
+            <Auth onFinish={() => setHasOnboarded(true)} />
+          </div>
+        ) : (
+          /* 3. Main App (Header + Pages + Floating Dock) */
+          <>
+            {/* Global Top Header */}
+            <Header />
 
-        {/* Main Page Scrollable Area */}
-        <main className="flex-1 overflow-y-auto no-scrollbar aurora-white-bg">
-          {renderPage()}
-        </main>
+            {/* Main Page Scrollable Area */}
+            <main className="flex-1 overflow-y-auto no-scrollbar aurora-white-bg">
+              {renderPage()}
+            </main>
+
+            {/* Global Floating Morphing Dock & Search (Mobile 3) */}
+            <MobileDockSearch active={page} onChange={setPage} />
+          </>
+        )}
 
         {/* Toast Notification */}
         <Toast message={toastMessage} />
-
-        {/* Global Fixed Bottom Navigation */}
-        <BottomNavigation active={page} onChange={setPage} />
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+export type Region = 'tamilnadu' | 'kerala' | 'andhra' | 'telangana' | 'karnataka';
+
 export type AppPage =
   | 'home'
   | 'explore'
@@ -11,7 +13,19 @@ export type AppPage =
   | 'book-a-cook'
   | 'cook-detail'
   | 'cafes'
-  | 'cafe-detail';
+  | 'cafe-detail'
+  | 'auth'
+  | 'regional-food';
+
+export interface User {
+  id: string;
+  name: string;
+  phone: string;
+  email?: string;
+  avatar?: string;
+  isGoldMember?: boolean;
+  location?: string;
+}
 
 export interface FoodItem {
   id: string;
@@ -30,6 +44,7 @@ export interface FoodItem {
   isTrending?: boolean;
   isHomemade?: boolean;
   prepTime: string;
+  region?: Region;
 }
 
 export interface Kitchen {
