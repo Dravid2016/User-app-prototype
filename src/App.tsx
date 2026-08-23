@@ -81,9 +81,9 @@ const AppContent: React.FC = () => {
             <Auth onFinish={() => setHasOnboarded(true)} />
           </div>
         ) : (
-          /* 3. Main App (Header + Pages + Floating Dock) */
+          /* 3. Main App (Fixed Header + Pages + Still Bottom Dock) */
           <>
-            {/* Global Top Header */}
+            {/* Global Top Header (Fixed Still at Top) */}
             <Header />
 
             {/* Main Page Scrollable Area */}
@@ -91,8 +91,10 @@ const AppContent: React.FC = () => {
               {renderPage()}
             </main>
 
-            {/* Global Floating Morphing Dock & Search (Mobile 3) */}
-            <MobileDockSearch active={page} onChange={setPage} />
+            {/* Global Bottom Dock Navigation (Fixed Still at Bottom) */}
+            <div className="sticky bottom-0 left-0 right-0 z-50 p-3 pt-1 pointer-events-none flex-shrink-0">
+              <MobileDockSearch active={page} onChange={setPage} />
+            </div>
           </>
         )}
 

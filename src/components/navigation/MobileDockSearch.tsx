@@ -189,7 +189,7 @@ export const MobileDockSearch: React.FC<MobileDockSearchProps> = ({
       </AnimatePresence>
 
       {/* Floating Morphing Dock Container */}
-      <div className="absolute bottom-3 left-4 right-4 z-50 pointer-events-auto">
+      <div className="relative w-full z-50 pointer-events-auto">
         <motion.div
           layout
           transition={{ type: 'spring', stiffness: 450, damping: 32 }}
