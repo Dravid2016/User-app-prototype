@@ -50,9 +50,9 @@ export const HOME_EVENT_CONFIG: HomeEventData = {
     friendDiscount: 50,
     userBonus: 50,
     tierGifts: [
-      { invites: 1, giftTitle: '₹50 Feazto Wallet Cash', icon: '💰' },
-      { invites: 3, giftTitle: 'Handcrafted Brass Filter Coffee Maker', icon: '☕' },
-      { invites: 5, giftTitle: 'Traditional Pure Ghee & Gunpowder Box', icon: '🎁' },
+      { invites: 1, giftTitle: '₹50 Feazto Wallet Cash', icon: 'Wallet' },
+      { invites: 3, giftTitle: 'Handcrafted Brass Filter Coffee Maker', icon: 'Coffee' },
+      { invites: 5, giftTitle: 'Traditional Pure Ghee & Gunpowder Box', icon: 'Gift' },
     ],
   },
   deliveryPerk: {

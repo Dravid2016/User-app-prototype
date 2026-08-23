@@ -3,6 +3,7 @@ export type Region = 'tamilnadu' | 'kerala' | 'andhra' | 'telangana' | 'karnatak
 export type AppPage =
   | 'home'
   | 'explore'
+  | 'community'
   | 'food-detail'
   | 'cart'
   | 'checkout'

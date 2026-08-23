@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Bell, Heart, ShoppingBag, Music, Volume2, VolumeX } from 'lucide-react';
+import { Bell, Heart, ShoppingBag, Volume2, VolumeX } from 'lucide-react';
 import { useAppStore } from '../../../store/appStore';
 import './header.css';
 
@@ -63,10 +63,10 @@ export const Header: React.FC<HeaderProps> = ({
         musicIntervalRef.current = null;
       }
       setIsPlayingMusic(false);
-      showToast('App Background Music: Off 🔇');
+      showToast('App Background Music: Off');
     } else {
       setIsPlayingMusic(true);
-      showToast('App Background Music: Playing Soothing Melodies 🎵');
+      showToast('App Background Music: Playing Soothing Melodies');
       playAmbientNote();
       musicIntervalRef.current = setInterval(() => {
         playAmbientNote();
@@ -178,4 +178,3 @@ export const Header: React.FC<HeaderProps> = ({
     </header>
   );
 };
-

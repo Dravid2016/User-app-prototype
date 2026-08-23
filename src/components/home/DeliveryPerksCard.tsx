@@ -45,7 +45,7 @@ export const DeliveryPerksCard: React.FC = () => {
             <div className="text-[14px] font-black text-[#111111] mt-0.5">₹25 Delivery</div>
           </div>
           <p className="text-[7.5px] font-bold text-[#707070] mt-1.5 border-t border-black/5 pt-1">
-            🛵 100% goes directly to your local neighborhood rider.
+            100% goes directly to your local neighborhood rider.
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export const DeliveryPerksCard: React.FC = () => {
             </div>
           </div>
           <p className="text-[7.5px] font-bold text-[#707070] mt-1.5 border-t border-black/5 pt-1">
-            ✨ Feazto sponsors rider compensation on family meals.
+            Feazto sponsors rider compensation on family meals.
           </p>
         </div>
       </div>
@@ -72,7 +72,7 @@ export const DeliveryPerksCard: React.FC = () => {
           {cartSubtotal === 0 ? (
             <span>Add homemade items worth <strong className="text-[#111111]">₹100+</strong> for Free Delivery</span>
           ) : isFreeDelivery ? (
-            <span className="text-green-700 font-extrabold">🎉 You unlocked FREE Delivery for this order!</span>
+            <span className="text-green-700 font-extrabold">You unlocked FREE Delivery for this order!</span>
           ) : (
             <span>Add <strong className="text-[#111111]">₹{amountNeeded}</strong> more to unlock Free Delivery!</span>
           )}

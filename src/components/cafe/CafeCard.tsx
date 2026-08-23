@@ -19,15 +19,19 @@ export const CafeCard: React.FC<CafeCardProps> = ({ cafe }) => {
   };
 
   return (
-    <BentoCard onClick={handleClick} padding="none" className="mb-4 flex flex-col border-2 border-black/10 shadow-sm">
-      <div className="relative w-full h-36">
-        <ImageWithFallback src={cafe.image} alt={cafe.name} className="w-full h-full" />
-        <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 bg-[#FFD21F] text-[#111111] text-[10px] font-black rounded-md border border-[#111111]">
+    <BentoCard onClick={handleClick} padding="none" className="mb-4 flex flex-col border-2 border-black/10 shadow-sm overflow-hidden group">
+      <div className="relative w-full aspect-[16/9] sm:h-44 overflow-hidden bg-gray-100">
+        <ImageWithFallback 
+          src={cafe.image} 
+          alt={cafe.name} 
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+        />
+        <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 bg-[#FFD21F] text-[#111111] text-[10px] font-black rounded-md border border-[#111111] shadow-xs">
           {cafe.ambiance}
         </span>
       </div>
 
-      <div className="p-3.5 flex flex-col justify-between flex-1">
+      <div className="p-3.5 flex flex-col justify-between flex-1 text-left bg-white">
         <div>
           <div className="flex items-center justify-between mb-1">
             <Rating rating={cafe.rating} reviewCount={cafe.reviews} />
@@ -61,7 +65,7 @@ export const CafeCard: React.FC<CafeCardProps> = ({ cafe }) => {
             <Coffee size={12} className="text-[#FFD21F] flex-shrink-0" />
             {cafe.popularItems[0]}
           </span>
-          <span className="text-[11px] font-black text-[#111111]">
+          <span className="text-[11px] font-black text-[#111111] group-hover:translate-x-0.5 transition-transform">
             Explore →
           </span>
         </div>

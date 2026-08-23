@@ -9,7 +9,7 @@ import { useAppStore } from '../../store/appStore';
 
 interface CookCardProps {
   cook: Cook;
-  onBook: () => void;
+  onBook?: () => void;
 }
 
 export const CookCard: React.FC<CookCardProps> = ({ cook, onBook }) => {

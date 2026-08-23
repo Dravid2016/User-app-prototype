@@ -10,10 +10,10 @@ export const DailyStreakCard: React.FC = () => {
 
   const handleClaim = () => {
     if (claimed) {
-      showToast('Daily Streak already active for today! 🔥');
+      showToast('Daily Streak already active for today!');
     } else {
       setClaimed(true);
-      showToast('🎉 Daily Streak Verified! 1 Day closer to the Monthly Mega Feast!');
+      showToast('Daily Streak Verified! 1 Day closer to the Monthly Mega Feast!');
     }
   };
 

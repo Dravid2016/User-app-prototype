@@ -86,7 +86,7 @@ export const AmmaSamayalSection: React.FC = () => {
                 {/* Cook Info Chip */}
                 <div className="flex items-center justify-between gap-1 mb-1">
                   <span className="text-[8px] font-black bg-[#fff3b8] text-[#111111] px-1.5 py-0.5 rounded border border-[#111111]">
-                    👩‍🍳 {item.ammaName} ({item.ammaCity})
+                    {item.ammaName} ({item.ammaCity})
                   </span>
                   <span className="text-[7.5px] font-bold text-[#707070]">
                     {item.prepTime}

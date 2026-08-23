@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Compass, ShoppingBag, Heart, User, Search, X, ChevronRight, Sparkles, ChefHat } from 'lucide-react';
+import { Home, Compass, Users, ShoppingBag, User, Search, X, ChevronRight, Sparkles, ChefHat } from 'lucide-react';
 import { AppPage, FoodItem } from '../../types';
 import { useAppStore } from '../../store/appStore';
 import { MOCK_FOODS } from '../../data/foods';
@@ -68,6 +68,7 @@ export const MobileDockSearch: React.FC<MobileDockSearchProps> = ({
   const navItems = [
     { id: 'home' as AppPage, label: 'Home', icon: Home },
     { id: 'explore' as AppPage, label: 'Explore', icon: Compass },
+    { id: 'community' as AppPage, label: 'Community', icon: Users },
     { id: 'orders' as AppPage, label: 'Orders', icon: ShoppingBag },
     { id: 'profile' as AppPage, label: 'You', icon: User },
   ];
@@ -83,7 +84,7 @@ export const MobileDockSearch: React.FC<MobileDockSearchProps> = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setIsSearchOpen(false)}
-            className="absolute inset-0 bg-black/40 backdrop-blur-xs z-45"
+            className="fixed inset-0 bg-black/50 backdrop-blur-xs z-45 pointer-events-auto"
           />
         )}
       </AnimatePresence>
@@ -96,7 +97,7 @@ export const MobileDockSearch: React.FC<MobileDockSearchProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.96 }}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-            className="absolute bottom-20 left-4 right-4 z-50 max-h-[380px] bg-[#ffffff] border-2 border-[#111111] rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.2),0_4px_0_#111111] overflow-hidden flex flex-col"
+            className="absolute bottom-20 left-4 right-4 z-50 max-h-[380px] bg-[#ffffff] border-2 border-[#111111] rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.2),0_4px_0_#111111] overflow-hidden flex flex-col pointer-events-auto"
           >
             {/* Header & Filter Chips */}
             <div className="p-3 bg-[#fffdf5] border-b border-[#111111]/10 flex items-center justify-between">
@@ -112,7 +113,7 @@ export const MobileDockSearch: React.FC<MobileDockSearchProps> = ({
                     key={filter}
                     onClick={() => setSelectedFilter(filter)}
                     type="button"
-                    className={`text-[9px] font-extrabold px-2 py-0.5 rounded-full border transition-all ${
+                    className={`text-[9px] font-extrabold px-2 py-0.5 rounded-full border transition-all cursor-pointer ${
                       selectedFilter === filter
                         ? 'bg-[#111111] text-[#ffffff] border-[#111111]'
                         : 'bg-white text-[#707070] border-black/10 hover:border-black/30'
@@ -131,7 +132,7 @@ export const MobileDockSearch: React.FC<MobileDockSearchProps> = ({
                   key={food.id}
                   onClick={() => handleSelectFood(food)}
                   type="button"
-                  className="w-full flex items-center gap-2.5 p-2 rounded-xl bg-[#fffdf5] hover:bg-[#fff9df] active:scale-[0.98] border border-black/5 transition-all text-left group"
+                  className="w-full flex items-center gap-2.5 p-2 rounded-xl bg-[#fffdf5] hover:bg-[#fff9df] active:scale-[0.98] border border-black/5 transition-all text-left group cursor-pointer"
                 >
                   <img
                     src={food.image}
@@ -156,7 +157,7 @@ export const MobileDockSearch: React.FC<MobileDockSearchProps> = ({
                   key={chef.id}
                   onClick={() => handleSelectChef(chef)}
                   type="button"
-                  className="w-full flex items-center gap-2.5 p-2 rounded-xl bg-[#fffdf5] hover:bg-[#fff9df] active:scale-[0.98] border border-black/5 transition-all text-left group"
+                  className="w-full flex items-center gap-2.5 p-2 rounded-xl bg-[#fffdf5] hover:bg-[#fff9df] active:scale-[0.98] border border-black/5 transition-all text-left group cursor-pointer"
                 >
                   <img
                     src={chef.image}
@@ -252,6 +253,7 @@ export const MobileDockSearch: React.FC<MobileDockSearchProps> = ({
                   const isActive =
                     (tab.id === 'home' && (active === 'home' || active === 'regional-food')) ||
                     (tab.id === 'explore' && (active === 'explore' || active === 'food-detail' || active === 'cafes' || active === 'cafe-detail')) ||
+                    (tab.id === 'community' && active === 'community') ||
                     (tab.id === 'orders' && (active === 'orders' || active === 'cart' || active === 'checkout' || active === 'order-success')) ||
                     (tab.id === 'saved' && active === 'saved') ||
                     (tab.id === 'profile' && active === 'profile');

@@ -349,7 +349,7 @@ export const OrderSuccess: React.FC = () => {
                 className="w-11 h-11 rounded-full object-cover border-2 border-[#111111]"
               />
               <span className="absolute -bottom-1 -right-1 bg-[#FFD21F] text-[#111111] text-[9px] font-black px-1 rounded border border-[#111111]">
-                4.9★
+                4.9
               </span>
             </div>
 

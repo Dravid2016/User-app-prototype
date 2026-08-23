@@ -36,7 +36,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
           onClick={onToggleFavorite}
           type="button"
         >
-          {isFav ? '★' : '+'}
+          {isFav ? '' : '+'}
         </button>
       </div>
 

@@ -106,7 +106,7 @@ export const Auth: React.FC<AuthProps> = ({ onFinish }) => {
 
   const completeLogin = (userProfile: any) => {
     login(userProfile);
-    showToast(`Welcome to Feazto, ${userProfile.name}! 🎉`);
+    showToast(`Welcome to Feazto, ${userProfile.name}! `);
     if (onFinish) {
       onFinish();
     } else {

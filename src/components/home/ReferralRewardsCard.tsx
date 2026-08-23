@@ -11,7 +11,7 @@ export const ReferralRewardsCard: React.FC = () => {
   const handleCopy = () => {
     navigator.clipboard?.writeText(referral.code);
     setCopied(true);
-    showToast('🎉 Referral Code copied to clipboard!');
+    showToast('Referral Code copied to clipboard!');
     setTimeout(() => setCopied(false), 2500);
   };
 
@@ -21,7 +21,7 @@ export const ReferralRewardsCard: React.FC = () => {
       navigator.share({ title: 'Feazto Homemade Food', text }).catch(() => {});
     } else {
       navigator.clipboard?.writeText(text);
-      showToast('🎁 Invitation message copied to share with friends!');
+      showToast('Invitation message copied to share with friends!');
     }
   };
 
@@ -58,7 +58,7 @@ export const ReferralRewardsCard: React.FC = () => {
         <button
           type="button"
           onClick={handleCopy}
-          className="p-1.5 px-2.5 bg-[#f4f4f4] hover:bg-[#e8e8e8] border border-[#111111] rounded-lg text-[9px] font-black text-[#111111] flex items-center gap-1 active:scale-95 transition-transform"
+          className="p-1.5 px-2.5 bg-[#f4f4f4] hover:bg-[#e8e8e8] border border-[#111111] rounded-lg text-[9px] font-black text-[#111111] flex items-center gap-1 active:scale-95 transition-transform cursor-pointer"
         >
           {copied ? <Check size={11} className="text-green-600" /> : <Copy size={11} />}
           {copied ? 'Copied' : 'Copy'}
@@ -67,7 +67,7 @@ export const ReferralRewardsCard: React.FC = () => {
         <button
           type="button"
           onClick={handleShare}
-          className="p-1.5 px-3 bg-[#FFD21F] hover:bg-[#e0b810] border border-[#111111] rounded-lg text-[9px] font-black text-[#111111] flex items-center gap-1 active:scale-95 transition-transform shadow-[0_1px_0_#111111]"
+          className="p-1.5 px-3 bg-[#FFD21F] hover:bg-[#e0b810] border border-[#111111] rounded-lg text-[9px] font-black text-[#111111] flex items-center gap-1 active:scale-95 transition-transform shadow-[0_1px_0_#111111] cursor-pointer"
         >
           <Share2 size={11} /> Share
         </button>
@@ -84,7 +84,9 @@ export const ReferralRewardsCard: React.FC = () => {
               key={idx}
               className="bg-white p-2 rounded-xl border border-[#111111] text-center shadow-[0_1px_0_#111111]"
             >
-              <div className="text-[14px] mb-0.5">{tier.icon}</div>
+              <div className="mb-0.5 flex justify-center text-[#111111]">
+                <Gift size={14} className="text-[#111111]" />
+              </div>
               <div className="text-[7.5px] font-black text-[#111111] leading-tight">
                 {tier.invites} {tier.invites === 1 ? 'Friend' : 'Friends'}
               </div>

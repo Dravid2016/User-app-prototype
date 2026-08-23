@@ -20,6 +20,7 @@ import { CafeDetail } from './pages/CafeDetail';
 import { Auth } from './pages/Auth';
 import { SplashScreen } from './components/common/SplashScreen';
 import { RegionalFood } from './pages/RegionalFood';
+import { Community } from './pages/Community';
 
 const AppContent: React.FC = () => {
   const { page, setPage, user, toastMessage } = useAppStore();
@@ -30,6 +31,8 @@ const AppContent: React.FC = () => {
     switch (page) {
       case 'explore':
         return <Explore />;
+      case 'community':
+        return <Community />;
       case 'food-detail':
         return <FoodDetail />;
       case 'cart':

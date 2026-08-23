@@ -58,3 +58,11 @@
 .animate-pulse-yellow {
   animation: pulse-yellow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* Feazto Brand Text Logo Font Style */
+.feazto-logo-font {
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 950;
+  font-style: italic;
+  letter-spacing: -0.04em;
+}

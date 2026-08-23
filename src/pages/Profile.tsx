@@ -28,7 +28,7 @@ export const Profile: React.FC = () => {
       isGoldMember: true,
       location: 'Anna Nagar, Chennai',
     });
-    showToast('Signed in successfully as Ranjith Kumar! 🎉');
+    showToast('Signed in successfully as Ranjith Kumar!');
   };
 
   const userInitial = user?.name ? user.name.charAt(0).toUpperCase() : 'G';
@@ -59,7 +59,7 @@ export const Profile: React.FC = () => {
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full bg-[#FFD21F] border-2 border-[#111111] flex items-center justify-center text-lg font-black shadow-sm">
-                👤
+                <User size={20} className="text-[#111111]" />
               </div>
               <div>
                 <h2 className="text-base font-black text-[#111111]">Guest Foodie</h2>
@@ -151,7 +151,7 @@ export const Profile: React.FC = () => {
             {activeModal === 'language' && (
               <div className="space-y-2 text-xs font-bold text-[#111111]">
                 <button onClick={() => { showToast('Language set to English'); setActiveModal(null); }} className="w-full p-2 bg-[#FFD21F] rounded-xl border border-black text-left font-black">
-                  ✓ English (Default)
+                   English (Default)
                 </button>
                 <button onClick={() => { showToast('மொழி தமிழ் ஆக மாற்றப்பட்டது'); setActiveModal(null); }} className="w-full p-2 bg-[#FAFAFA] rounded-xl border border-black/10 text-left">
                   தமிழ் (Tamil)

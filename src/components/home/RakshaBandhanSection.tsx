@@ -11,7 +11,7 @@ export const RakshaBandhanSection: React.FC = () => {
   const handleCopyCoupon = () => {
     navigator.clipboard?.writeText(RAKSHA_BANDHAN_CONFIG.couponCode);
     setCopiedCoupon(true);
-    showToast(`🎉 Coupon "${RAKSHA_BANDHAN_CONFIG.couponCode}" Copied! ₹100 OFF unlocked on festive orders!`);
+    showToast(`Coupon "${RAKSHA_BANDHAN_CONFIG.couponCode}" Copied! ₹100 OFF unlocked on festive orders!`);
     setTimeout(() => setCopiedCoupon(false), 2500);
   };
 
@@ -76,7 +76,7 @@ export const RakshaBandhanSection: React.FC = () => {
             <Clock size={10} /> AUG 28 · RAKSHA BANDHAN
           </div>
           <span className="text-[8px] font-black text-[#111111] bg-white/95 px-2 py-0.5 rounded-md border border-[#111111] shadow-[0_1px_0_#111111]">
-            ⏳ 5 Days Left
+            5 Days Left
           </span>
         </div>
 

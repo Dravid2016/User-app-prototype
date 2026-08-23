@@ -7,6 +7,7 @@ import { QuickActionBar } from '../components/home/QuickActionBar';
 import { useAppStore } from '../store/appStore';
 import { BentoCard } from '../components/bento/BentoCard';
 import { BentoButton } from '../components/bento/BentoButton';
+import { ImageWithFallback } from '../components/common/ImageWithFallback';
 
 export const CafeDiscovery: React.FC = () => {
   const { setPage, addToCart, savedItemIds, toggleFavorite, showToast } = useAppStore();
@@ -14,11 +15,11 @@ export const CafeDiscovery: React.FC = () => {
 
   const categories = [
     { id: 'all', label: 'All Healthy Treats' },
-    { id: 'snack', label: 'Healthy Snacks 🥨' },
-    { id: 'juice', label: 'Organic Juices 🍊' },
-    { id: 'shot', label: 'Immunity Shots ⚡' },
-    { id: 'tea', label: 'Artisanal Teas & Coffee ☕' },
-    { id: 'bake', label: 'Millet & Healthy Bakes 🍪' },
+    { id: 'snack', label: 'Healthy Snacks' },
+    { id: 'juice', label: 'Organic Juices' },
+    { id: 'shot', label: 'Immunity Shots' },
+    { id: 'tea', label: 'Artisanal Teas & Coffee' },
+    { id: 'bake', label: 'Millet & Healthy Bakes' },
   ];
 
   const filteredItems = HEALTHY_CAFE_ITEMS.filter((item) => {
@@ -47,16 +48,11 @@ export const CafeDiscovery: React.FC = () => {
 
   return (
     <div className="pb-24 pt-2 px-4 animate-fade-in text-left">
-      {/* 1. Mode Switcher Bar (Feazto | Book a cook | Cafe) */}
-      <div className="mb-3">
-        <QuickActionBar />
-      </div>
-
       {/* Hero Banner */}
       <div className="p-4 bg-gradient-to-r from-[#111111] via-[#222222] to-[#111111] text-white rounded-[24px] border-2 border-black mb-5 shadow-md relative overflow-hidden">
         <div className="relative z-10">
           <div className="flex items-center gap-2 text-[#FFD21F] text-xs font-black mb-1">
-            <Sparkles size={14} /> FEAZTO Homemade Healthy Cafe
+            <Sparkles size={14} /> FEAZTO Homemade Healthy Carefe
           </div>
           <h2 className="text-xl font-black leading-tight text-white mb-1 tracking-tight">
             Guilt-free homemade snacks, 100% organic cold-pressed juices & artisanal brews.
@@ -89,7 +85,7 @@ export const CafeDiscovery: React.FC = () => {
         <div className="flex items-center justify-between mb-3">
           <div>
             <h3 className="text-sm font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-              <Coffee size={16} className="text-[#FFD21F]" /> Healthy Cafe Menu ({filteredItems.length})
+              <Coffee size={16} className="text-[#FFD21F]" /> Healthy Carefe Menu ({filteredItems.length})
             </h3>
             <p className="text-[10px] font-bold text-[#707070]">
               Organic cold-pressed juices, sprouted snacks & immunity elixirs
@@ -99,19 +95,19 @@ export const CafeDiscovery: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
           {filteredItems.map((item) => (
-            <BentoCard key={item.id} padding="none" className="border-2 border-[#111111] overflow-hidden shadow-sm flex flex-col justify-between">
+            <BentoCard key={item.id} padding="none" className="border-2 border-[#111111] overflow-hidden shadow-sm flex flex-col justify-between group">
               <div>
-                <div className="relative h-36 w-full overflow-hidden">
-                  <img
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-100">
+                  <ImageWithFallback
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-2 left-2 bg-[#111111] text-[#FFD21F] text-[9px] font-black px-2 py-0.5 rounded-md border border-[#FFD21F]">
+                  <div className="absolute top-2 left-2 bg-[#111111] text-[#FFD21F] text-[9px] font-black px-2 py-0.5 rounded-md border border-[#FFD21F] shadow-xs">
                     {item.tag}
                   </div>
                   <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-md text-[#111111] text-[9px] font-black px-2 py-0.5 rounded-md border border-black/10">
-                    🔥 {item.calories}
+                    {item.calories}
                   </div>
                   <button
                     onClick={() => toggleFavorite(item.id)}
@@ -125,7 +121,7 @@ export const CafeDiscovery: React.FC = () => {
                   </button>
                 </div>
 
-                <div className="p-3 bg-white">
+                <div className="p-3 bg-white text-left">
                   <div className="flex items-start justify-between mb-1">
                     <h4 className="text-xs font-black text-[#111111] leading-snug">{item.name}</h4>
                     <span className="text-xs font-black text-[#111111] shrink-0 ml-2">₹{item.price}</span>
@@ -152,15 +148,15 @@ export const CafeDiscovery: React.FC = () => {
         </div>
       </div>
 
-      {/* 3. Featured Local Cafe Spots Section */}
+      {/* 3. Featured Local Carefe Spots Section */}
       <div>
         <div className="flex items-center justify-between mb-3">
           <div>
             <h3 className="text-sm font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-              <Sparkles size={16} className="text-[#FFD21F]" /> Featured Cafe Outlets
+              <Sparkles size={16} className="text-[#FFD21F]" /> Featured Carefe Outlets
             </h3>
             <p className="text-[10px] font-bold text-[#707070]">
-              Discover Chennai's finest degree coffee & healthy cafe spots
+              Discover Chennai's finest degree coffee & healthy carefe spots
             </p>
           </div>
         </div>
